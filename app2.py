@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import altair as alt
 
 #Title
 st.title("📊 Streamlit Calorie Intake App")
@@ -96,9 +97,23 @@ if st.button("Calculate"):
     st.write(f"With a goal of {goal}")
     for k,v in n_weight.items():
         st.write(f"Weight after week {k} = {v} Kgs")
-    data=pd.DataFrame(n_weight)
-    st.subheader("Goal Chart")
-    st.line_chart(data)
+    
+    # Plotting weight progression
+    if len(n_weight) > 0:
+        st.subheader("📉 Weight Progress Over Time")
+
+        df = pd.DataFrame(list(n_weight.items()), columns=["Week", "Weight"])
+
+        #Define custom Y-axis range
+        y_min = df["Weight"].min() - 1
+        y_max = df["Weight"].max() + 1
+
+        chart = alt.Chart(df).mark_line(point=True).encode(
+            x="Week",
+            y=alt.Y("Weight", scale=alt.Scale(domain=[y_min, y_max]))
+        )
+
+        st.altair_chart(chart, use_container_width=True)
 
 
 
