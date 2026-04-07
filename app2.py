@@ -97,7 +97,7 @@ if st.button("Calculate"):
     st.write(f"With a goal of {goal}")
     for k,v in n_weight.items():
         st.write(f"Weight after week {k} = {v} Kgs")
-    
+
     # Plotting weight progression
     if len(n_weight) > 0:
         st.subheader("📉 Weight Progress Over Time")
@@ -114,6 +114,8 @@ if st.button("Calculate"):
         )
 
         st.altair_chart(chart, use_container_width=True)
+
+
 
 
 
