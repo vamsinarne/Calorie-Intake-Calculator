@@ -96,6 +96,10 @@ if st.button("Calculate"):
     st.write(f"With a goal of {goal}")
     for k,v in n_weight.items():
         st.write(f"Weight after week {k} = {v} Kgs")
+    data=pd.DataFrame(n_weight)
+    st.subheader("Goal Chart")
+    st.line_chart(data)
+
 
 
 
