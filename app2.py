@@ -81,7 +81,7 @@ if st.button("Calculate"):
     st.write(f"\nNormal Weight Loss: {normal_loss:.0f} Calories/day")
     st.write(f"\nExtreme Weight Loss: {extreme_loss:.0f} Calories/day")
 
-    #storing weight after every month in a dictionary
+    #storing weight after every week in a dictionary
     n_weight={}
     if goal=="Maintain Weight":
         st.write(f"No change in weight after {n} weeks")
